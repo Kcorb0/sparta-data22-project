@@ -3,21 +3,24 @@
 
 Contributors
 
-Amy Zhang
-Aaron Davis
-Andrew Rothwell
-David Liley
-Josh Blackmore
-Matt Brackenbury
-Milan Cosgrove
-Myles Langston
-Ola Ajayi
-Oluwatobi Jones
-Oscar Twinning
-Sam Duke
-Theo Gluckstein
+•	Amy Zhang
+•	Aaron Davis
+•	Andrew Rothwell
+•	David Liley
+•	Josh Blackmore
+•	Matt Brackenbury
+•	Milan Cosgrove
+•	Myles Langston
+•	Ola Ajayi
+•	Oluwatobi Jones
+•	Oscar Twinning
+•	Sam Duke
+•	Theo Gluckstein
 
 Acknowledgements
 
-Paula K.
-David H.
+•	Paula K.
+•	David H.
+
+
+
