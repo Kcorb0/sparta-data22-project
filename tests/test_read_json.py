@@ -12,7 +12,7 @@ def test_read_json():
     )['Body']
 
     decoded_file = talent_file.read().decode('utf-8')
-
+    
     convert_to_json = json.loads(decoded_file)
 
     assert type(convert_to_json) is dict
