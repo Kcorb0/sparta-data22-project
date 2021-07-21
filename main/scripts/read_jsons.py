@@ -1,6 +1,7 @@
 import json, boto3
 from pprint import pprint
-from collect_file_names import get_jsons
+
+import pandas as pd
 
 # Creating an s3 client
 s3_client = boto3.client('s3')

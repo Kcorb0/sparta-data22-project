@@ -4,14 +4,16 @@ from collect_file_names import get_jsons
 from read_jsons import read_json
 
 
-def get_file_objects():
+def get_load_jsons():
 
     objects_list = []
 
+    cnt = 1
+
     for i in get_jsons():
-        objects_list.append(read_json(i))
-        print(i)
+        content = objects_list.append(read_json(i))
+        
+        cnt += 1
 
-    return objects_list
+    print('Done')
 
-get_file_objects()
