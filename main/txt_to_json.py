@@ -1,6 +1,11 @@
 import json, boto3
 from pprint import pprint
 
+# Creating an s3 client
+s3_client = boto3.client('s3')
+# Defining the bucket name
+bucket_name = 'data22-final-project'
+
 
 def txt_reading():
     s3_client = boto3.client('s3')

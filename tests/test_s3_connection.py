@@ -11,5 +11,3 @@ def test_s3_connection():
     )['ResponseMetadata']['HTTPStatusCode']
     
     assert status == 200
-
-
