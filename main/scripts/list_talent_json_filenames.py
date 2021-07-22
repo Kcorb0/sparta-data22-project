@@ -1,5 +1,4 @@
-import json, boto3
-from pprint import pprint
+import boto3
 
 # Creating an s3 client
 s3_client = boto3.client('s3')
