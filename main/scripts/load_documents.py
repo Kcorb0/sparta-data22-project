@@ -1,20 +1,25 @@
-from list_talent_json_filenames import get_jsons
+from list_talent_json_filenames import get_talent_jsons
 from read_json import read_json
-from insert_file_into_collection import *
+from load_documents import *
+from mongo_load_document import mongo_load_document
+from list_academy_csv_filenames import get_academy_csvs
 
 
-def load_documents(file_list, file_type):
+def load_documents(file_list, file_type, collection):
     # Loads the provided list of json documents to the MongoDB server
 
     if file_type == 'json':
         # If file 
         for i in file_list:
-            insert_file_into_collection(read_json(i))
+            mongo_load_document(read_json(i), collection)
+
     elif file_type == 'csv':
-        pass
+        for i in file_list:
+            mongo_load_document(i, collection)
     else:
         print('Need valid file type.')
 
     print('Loading to datastore finished.')
 
-load_documents(get_jsons(), 'json')
+load_documents(get_talent_jsons(), 'json', 'talent')
+load_documents(get_academy_csvs(), 'csv', 'academy')

@@ -5,7 +5,7 @@ s3_client = boto3.client('s3')
 # Defining the bucket name
 bucket_name = 'data22-final-project'
 
-def get_jsons():
+def get_talent_jsons():
     ### Function that creats a 2d array of json files by every 1000
 
     jsons_list = [] # List of json names within Talent

@@ -1,4 +1,4 @@
-from mongo_create_talent_collection import create_talent_collection, db
+from mongo_create_talent_collection import db
 
 
 def mongo_load_document(file, collection):
@@ -22,7 +22,3 @@ def mongo_load_document(file, collection):
     else:
         print('Collection does not exist.')
         return 'Stopped'
-
-
-file = {'name': 'testman', 'age': 23}
-mongo_load_document(file, 'test')
