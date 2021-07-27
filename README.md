@@ -40,8 +40,7 @@ Users will also be able to use the newly transformed data within MongoDB Atlas' 
 Please ensure you have met the requirements listed:
 
 * You have installed the latest version of Python.
-* You have installed the Pymongo package.
-* You have installed the Pandas package.
+* You have installed the Pymongo package and all other packages in the requirements.txt. 
 * Set up a boto3 S3 Client Server for amazon S3.
 * A connection to MongoDB Compass and MongoDB Atlas for Data Loading and Analysis.
 
