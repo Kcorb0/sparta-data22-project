@@ -1,4 +1,4 @@
-from mongodb_create_collections import db
+from app.load.mongodb_create_collections import db
 
 
 def mongo_load_document(file, collection):

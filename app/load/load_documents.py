@@ -1,9 +1,9 @@
-from list_talent_json_filenames import get_talent_jsons
-from read_json import read_json
-from mongo_load_document import mongo_load_document
-from list_academy_csv_filenames import get_academy_csvs
-from list_spartaday_csv_filenames import get_spartaday_csvs
-from list_applicants_csv_filenames import get_applicants_csvs
+from app.load.mongo_load_document import mongo_load_document
+from app.load.read_json import read_json
+from app.load.list_talent_json_filenames import get_talent_jsons
+from app.load.list_academy_csv_filenames import get_academy_csvs
+from app.load.list_spartaday_csv_filenames import get_spartaday_csvs
+from app.load.list_applicants_csv_filenames import get_applicants_csvs
 
 
 def load_documents(file_list, file_type, collection):

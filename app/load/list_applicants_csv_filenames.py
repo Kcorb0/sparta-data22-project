@@ -1,4 +1,4 @@
-from convert_csv_to_dict import *
+from app.load.convert_csv_to_dict import *
 
 
 # Function that extracts the files from the applicants folder within the s3 bucket

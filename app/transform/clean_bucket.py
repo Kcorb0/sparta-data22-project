@@ -1,8 +1,8 @@
 from app.extract.s3_client import *
-from clean_academy_csv import clean_academy_csv
-from clean_talent_json import clean_json_file
-from clean_spartaday_txt import clean_txt_file
-from clean_applicants_csv import clean_applicants_csv_file
+from app.transform.clean_academy_csv import clean_academy_csv
+from app.transform.clean_talent_json import clean_json_file
+from app.transform.clean_spartaday_txt import clean_txt_file
+from app.transform.clean_applicants_csv import clean_applicants_csv_file
 
 
 def create_file_list(prefix):

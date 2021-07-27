@@ -1,4 +1,4 @@
-from create_database_mongodb import *
+from app.load.create_database_mongodb import *
 
 
 # These functions create collections called in the 'sparta_global' database in MongoDB

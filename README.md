@@ -40,9 +40,25 @@ Users will also be able to use the newly transformed data within MongoDB Atlas' 
 Please ensure you have met the requirements listed:
 
 * You have installed the latest version of Python.
-* You have installed the Pymongo package and all other packages in the requirements.txt. 
-* Set up a boto3 S3 Client Server for amazon S3.
+* You have installed the Pymongo package and all other packages in the requirements.txt.
 * A connection to MongoDB Compass and MongoDB Atlas for Data Loading and Analysis.
+* Set up your AWS credentials in a .aws folder located in your home directory.
+
+<br>
+The AWS credentials can be created via a GitBash terminal by doing the following: <br>
+
+> cd ~ <br>
+> mkdir .aws <br>
+> cd .aws <br>
+> notepad config <br>
+
+Then enter your credentials into the notepad using the following template: <br>
+
+[default] <br>
+aws_access_key_id = < your access key id > <br>
+aws_secret_access_key = < your secret access key > <br>
+
+***Don't forget to save!***
 
 
 ## Other Applications
@@ -77,7 +93,6 @@ Here is a list of applications the project team used throughout the project:
 <li>Paula K.</li>
 <li>David H.</li>
 </ul>
-<br>
 
 ## Honourable Mentions
 <ul>
