@@ -56,7 +56,7 @@ Here is a list of applications the project team used throughout the project:
 
 
 ## Contributors
-
+<ul>
 <li>	Amy Zhang </li>
 <li>	Aaron Davis </li>
 <li>	Andrew Rothwell </li>
@@ -70,7 +70,7 @@ Here is a list of applications the project team used throughout the project:
 <li>	Oscar Twinning </li>
 <li>	Sam Duke </li>
 <li>	Theo Gluckstein </li>
-
+</ul>
 
 ## Product Owners
 <ul>
@@ -79,5 +79,8 @@ Here is a list of applications the project team used throughout the project:
 </ul>
 <br>
 
-
-
+## Honourable Mentions
+<ul>
+<li>Danny J.</li>
+</ul>
+<br>
