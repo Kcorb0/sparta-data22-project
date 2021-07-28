@@ -24,6 +24,7 @@ def get_talent_jsons():
             talent_file = s3_client.list_objects(Bucket=bucket_name, Prefix=f'Talent/{str(cnt)}')['Contents']
             jsons_list.append([i['Key'] for i in talent_file])
         except:
+            logger.error('Error trying to append each talent file to a list.')
             break
         cnt += 1
 

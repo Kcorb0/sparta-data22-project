@@ -23,11 +23,17 @@ def load_documents(file_list, file_type, collection):
     if file_type == 'json':
         # If file
         for i in file_list:
-            mongo_load_document(read_json(i), collection)
+            try:
+                mongo_load_document(read_json(i), collection)
+            except:
+                logger.error('Error trying to load talent files into MongoDB. ')
 
     elif file_type == 'csv':
         for i in file_list:
-            mongo_load_document(i, collection)
+            try:
+                mongo_load_document(i, collection)
+            except:
+                logger.error('Error trying to load all files other than talent files to MongoDB.')
     else:
         print('Need valid file type.')
 
@@ -35,7 +41,7 @@ def load_documents(file_list, file_type, collection):
 
 
 def load_to_mongodb():
-    logger.info('Cleaned files are being loaded to MongoDB')
+    logger.info('Cleaned files are being loaded to MongoDB.')
     load_documents(get_talent_jsons(), 'json', 'talent')
     logger.info('Talent files have been successfully loaded.')
     load_documents(get_academy_csvs(), 'csv', 'academy')

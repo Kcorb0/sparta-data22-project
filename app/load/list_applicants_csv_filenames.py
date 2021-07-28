@@ -28,9 +28,16 @@ def get_applicants_csvs():
     # Uses the list from get_all_applicants_filepath function
     for file in get_all_applicants_filepath():
         # Iterates through list to get the path for each file and use it for get_academies_objects function
-        file_to_use = get_csv_objects(file)
+        try:
+            file_to_use = get_csv_objects(file)
+        except:
+            logger.error('Error whilst trying to convert applicants csv to a dict.')
+            break
         # Iterates through list of dictionaries for each file and appends to list_all_applicants_content
         for each_dict in file_to_use:
-            list_all_applicants_content.append(each_dict)
-    logger.info('Academy csv files converted to json and ready to load into MongoDB')
+            try:
+                list_all_applicants_content.append(each_dict)
+            except:
+                logger.error('Error whilst trying to add each element of each applicants dict to a list.')
+    logger.info('Academy csv files converted to json and ready to load into MongoDB.')
     return list_all_applicants_content

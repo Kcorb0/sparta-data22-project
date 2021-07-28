@@ -48,45 +48,60 @@ def create_file_list(prefix):
 
 
 def clean_academy():
-    logger.info("Started to clean the academy files")
+    logger.info("Started to clean the academy files.")
     for i in create_file_list('Academy/'):
         path = bucket_name + '/' + i
-
-        clean_academy_csv(path)
+        try:
+            clean_academy_csv(path)
+        except:
+            logger.error('Error whilst trying to clean the academy csv files.')
+            break
         print(f'{i} cleaning successful')
-    logger.info('Cleaning of academy files complete')
+    logger.info('Cleaning of academy files complete.')
 
 
 def clean_talent():
-    logger.info('Started to clean the talent files')
+    logger.info('Started to clean the talent files.')
     for i in create_file_list('Talent/'):
         path = bucket_name + '/' + i
-        clean_json_file(path)
+        try:
+            clean_json_file(path)
+        except:
+            logger.error('Error trying to clean the talent json files.')
+            break
         print(f'{i} cleaning successful')
-    logger.info('Cleaning of talent files complete')
+    logger.info('Cleaning of talent files complete.')
+
 
 def clean_spartaday():
-    logger.info('Started to clean the sparta day files')
+    logger.info('Started to clean the sparta day files.')
     for i in create_file_list('Talent/Sparta'):
         path = bucket_name + '/' + i
-        clean_txt_file(path)
+        try:
+            clean_txt_file(path)
+        except:
+            logger.error('Error trying to clean the sparta day csv files.')
+            break
         print(f'{i} cleaning successful')
-    logger.info('Cleaning of sparta day files complete')
+    logger.info('Cleaning of sparta day files complete.')
 
 
 def clean_applicants():
-    logger.info('Started to clean the applicants files')
+    logger.info('Started to clean the applicants files.')
     for i in create_file_list('Talent/Applicants'):
         path = bucket_name + '/' + i
-        clean_applicants_csv_file(path)
+        try:
+            clean_applicants_csv_file(path)
+        except:
+            logger.error('Error trying to clean the applicants csv files.')
         print(f'{i} cleaning successful')
-    logger.info('Cleaning of applicants files complete')
+    logger.info('Cleaning of applicants files complete.')
 
 
 def clean_bucket():
-    logger.info('The cleaning of the original files has started')
+    logger.info('The cleaning of the original files has started.')
     clean_academy()
     clean_talent()
     clean_spartaday()
     clean_applicants()
-    logger.info('All cleaning has been successfully completed')
+    logger.info('All cleaning has been successfully completed.')
