@@ -6,7 +6,6 @@ from list_spartaday_csv_filenames import get_spartaday_csvs
 from list_applicants_csv_filenames import get_applicants_csvs
 
 
-
 def load_documents(file_list, file_type, collection):
     # Loads the provided list of json documents to the MongoDB server
 
