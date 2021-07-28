@@ -17,6 +17,8 @@ def mongo_load_document(file, collection):
         db.applicants.insert_one(file)
     elif collection == 'embedded_applicants':
         db.embedded_applicants.insert_one(file)
+    elif collection == 'embedded_applicants_test':
+        db.embedded_applicants_test.insert_one(file)
     else:
         print('Collection does not exist.')
         return 'Stopped'

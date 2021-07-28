@@ -11,7 +11,7 @@ def get_talent_jsons():
         # Try accept that breaks if there is no contents to be found with the given prefix
         try:
             # List all keys within the talent folder and append to jsons_list
-            talent_file = s3_client.list_objects(Bucket=bucket_name, Prefix=f'Talent/{str(cnt)}')['Contents']
+            talent_file = s3_client.list_objects(Bucket=bucket_name, Prefix=f'Cleaned/Json/{str(cnt)}')['Contents']
             jsons_list.append([i['Key'] for i in talent_file])
         except:
             break

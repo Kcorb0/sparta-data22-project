@@ -71,6 +71,7 @@ def change_phone_number_multiple(df):
     remove_characters = ['-', '(', ')', ' ']
     for character in remove_characters:
         change_phone_number(df, character)
+    df['phone_number'] = ('\"' + df['phone_number'] + '\"')
 
 
 def clean_applicants_csv_file(file_path):

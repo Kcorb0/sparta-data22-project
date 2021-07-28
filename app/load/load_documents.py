@@ -62,7 +62,7 @@ def embed_sparta_day():  # Same as previous, 4138 count
 
 
 def load_to_mongodb():
-    load_documents(get_applicants, 'csv', 'embedded_applicants')
+    load_documents(get_applicants, 'csv', 'embedded_applicants_test')
     # load_documents(get_talent_jsons(), 'json', 'talent')
     # load_documents(get_academy_csvs(), 'csv', 'academy')
     # load_documents(get_spartaday_csvs(), 'csv', 'spartaday')
