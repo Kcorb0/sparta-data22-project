@@ -108,5 +108,5 @@ def clean_txt_file(file_path):
     # Uploads the file to s3
     csv_buffer = StringIO()
     txt_file.to_csv(csv_buffer, index=False)
-    s3_resource.Object(bucket_name, 'Cleaned/Talent/Sparta_day/' + file_name.replace('txt', 'csv')) \
+    s3_resource.Object(bucket_name, 'Cleaned/Sparta_day/' + file_name.replace('txt', 'csv')) \
         .put(Body=csv_buffer.getvalue())

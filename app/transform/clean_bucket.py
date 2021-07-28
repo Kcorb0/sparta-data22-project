@@ -70,3 +70,4 @@ def clean_bucket():
     clean_spartaday()
     clean_applicants()
 
+clean_bucket()
