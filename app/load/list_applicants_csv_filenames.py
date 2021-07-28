@@ -1,9 +1,20 @@
 from app.load.convert_csv_to_dict import *
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
+
+file_handler = logging.FileHandler('extracting.log')
+file_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
 
 
 # Function that extracts the files from the applicants folder within the s3 bucket
 def get_all_applicants_filepath():
-
+    logger.info('Extracting applicants files from s3 bucket.')
     # Looks for all the files whose filepath starts with 'applicants/', gets content of all files in applicants folder
     applicants_file = s3_client.list_objects(Bucket=bucket_name, Prefix='Cleaned/Applicants/')['Contents']
     # Lists the path, by referencing the 'Key', for each file in the applicants folder
@@ -21,4 +32,8 @@ def get_applicants_csvs():
         # Iterates through list of dictionaries for each file and appends to list_all_applicants_content
         for each_dict in file_to_use:
             list_all_applicants_content.append(each_dict)
+    logger.info('Academy csv files converted to json and ready to load into MongoDB')
     return list_all_applicants_content
+
+
+get_applicants_csvs()
