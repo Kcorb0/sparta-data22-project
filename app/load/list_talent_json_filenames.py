@@ -1,9 +1,9 @@
 from app.extract.s3_client import *
+from read_json import read_json
 
 
 # Function that creats a 2d array of json files by every 1000
 def get_talent_jsons():
-
     jsons_list = []  # List of json names within Talent
     cnt = 10  # Count that resembles 1000 jsons
 
@@ -19,5 +19,4 @@ def get_talent_jsons():
 
     combined_list = []
     [combined_list.extend(i) for i in jsons_list]
-    
-    return combined_list
+    return [read_json(i) for i in combined_list]

@@ -32,7 +32,7 @@ def load_documents(file_list, file_type, collection):
 get_applicants = get_applicants_csvs()
 get_academy = get_academy_csvs()
 get_spartaday = get_spartaday_csvs()
-get_talent = [read_json(i) for i in get_talent_jsons()]
+get_talent = get_talent_jsons()
 
 
 def embed_academy():  # 397 matches
