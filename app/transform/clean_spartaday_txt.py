@@ -13,6 +13,8 @@ def get_date(txt_file):
         list_of_date_elements[0] = '0' + list_of_date_elements[0]
     dict_of_months = {month: index for index, month in enumerate(calendar.month_name) if month}
     list_of_date_elements = [dict_of_months.get(item, item) for item in list_of_date_elements]
+    if len(str(list_of_date_elements[1])) != 2:
+        list_of_date_elements[1] = '0' + str(list_of_date_elements[1])
     correct_date_format = str(list_of_date_elements[2]) + '-' + str(list_of_date_elements[1]) + '-' + str(
         list_of_date_elements[0])
     return correct_date_format
@@ -32,6 +34,8 @@ def get_list_of_names(txt_file):
     name_list.remove('\r')
     name_list.remove(name_list[0])
     name_list.remove(name_list[0])
+    for name in range(len(name_list)):
+        name_list[name] = name_list[name].title()
     return name_list
 
 
@@ -79,10 +83,10 @@ def get_list_of_presentation_scores(txt_file):
     return list_of_presentation_scores
 
 
-def create_df(first_name_list, last_name_list, pyschometric_score_list, presentation_score_list, academy_location,
+def create_df(full_name, pyschometric_score_list, presentation_score_list, academy_location,
               correct_date):
     df_scores = pd.DataFrame(
-        {'First_name': first_name_list, 'Last_name': last_name_list, 'Pyschometric_score': pyschometric_score_list,
+        {'Full_name': full_name, 'Pyschometric_score': pyschometric_score_list,
          'Presentation_score': presentation_score_list, 'Academy': academy_location, 'Date': correct_date})
     return df_scores
 
@@ -90,21 +94,19 @@ def create_df(first_name_list, last_name_list, pyschometric_score_list, presenta
 def clean_txt_file(file_path):
     # Takes the file path and gets just the file name
     file_name = file_path.replace('data22-final-project/Talent/', '')
-    key = 'Talent/'+file_name
+    key = 'Talent/' + file_name
     s3_object = s3_client.get_object(Bucket=bucket_name, Key=key)
     # Reads the csv into a dataframe
     txt_file = s3_object['Body'].read().decode('utf-8')
     # Places the required data into the dataframe in a new column
     academy = get_academy_location(txt_file)
     name_list = get_list_of_names(txt_file)
-    first_names = get_list_of_first_names(name_list)
-    last_names = get_list_of_last_names(name_list)
     pyschometric_scores = get_list_of_psychometric_scores(txt_file)
     presentation_scores = get_list_of_presentation_scores(txt_file)
     correct_date = get_date(txt_file)
-    txt_file = create_df(first_names, last_names, pyschometric_scores, presentation_scores, academy, correct_date)
+    txt_file = create_df(name_list, pyschometric_scores, presentation_scores, academy, correct_date)
     # Uploads the file to s3
     csv_buffer = StringIO()
     txt_file.to_csv(csv_buffer, index=False)
-    s3_resource.Object(bucket_name, 'Cleaned/Talent/Sparta_day/'+file_name.replace('txt', 'csv'))\
+    s3_resource.Object(bucket_name, 'Cleaned/Sparta_day/' + file_name.replace('txt', 'csv')) \
         .put(Body=csv_buffer.getvalue())

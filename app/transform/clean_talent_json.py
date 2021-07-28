@@ -6,7 +6,7 @@ import datetime
 # Sets the date field to either a datetime object or to null.
 def json_clean_date(file):
     try:
-        file['date'] = (datetime.datetime.strptime(file['date'], '%d/%m/%Y').date())
+        file['date'] = (datetime.datetime.strptime(file['date'], '%Y/%m/%d').date())
     except:
         file['date'] = None
 

@@ -1,4 +1,4 @@
-from app.load.mongodb_create_collections import db
+from app.load.create_database_mongodb import db
 
 
 def mongo_load_document(file, collection):
@@ -15,6 +15,8 @@ def mongo_load_document(file, collection):
         db.spartaday.insert_one(file)
     elif collection == 'applicants':
         db.applicants.insert_one(file)
+    elif collection == 'embedded_applicants':
+        db.embedded_applicants.insert_one(file)
     else:
         print('Collection does not exist.')
         return 'Stopped'
