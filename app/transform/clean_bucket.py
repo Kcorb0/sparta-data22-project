@@ -69,3 +69,4 @@ def clean_bucket():
     clean_talent()
     clean_spartaday()
     clean_applicants()
+

@@ -13,7 +13,7 @@ def clean_academy_csv(file_path):
     # Reads the csv into a dataframe
     academy = pd.read_csv(s3_object['Body'])
     # Places the required data into the dataframe in a new column
-    academy['start_date'] = date[0:10]
+    academy['start_date'] = date[0:10].replace('-', '/')
     academy['stream'] = stream
     # Uploads the file to s3
     csv_buffer = StringIO()

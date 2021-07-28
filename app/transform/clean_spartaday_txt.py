@@ -13,6 +13,8 @@ def get_date(txt_file):
         list_of_date_elements[0] = '0' + list_of_date_elements[0]
     dict_of_months = {month: index for index, month in enumerate(calendar.month_name) if month}
     list_of_date_elements = [dict_of_months.get(item, item) for item in list_of_date_elements]
+    if len(str(list_of_date_elements[1])) != 2:
+        list_of_date_elements[1] = '0' + str(list_of_date_elements[1])
     correct_date_format = str(list_of_date_elements[2]) + '-' + str(list_of_date_elements[1]) + '-' + str(
         list_of_date_elements[0])
     return correct_date_format

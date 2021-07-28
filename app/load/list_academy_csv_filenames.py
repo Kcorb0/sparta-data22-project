@@ -7,7 +7,7 @@ def get_all_academy_filepath():
     # Function that extracts the files from the academy folder within the s3 bucket
     
     # Looks for all the files whose filepath starts with 'Academy/' - gets all files in academy folder and its contents
-    academy_file = s3_client.list_objects(Bucket=bucket_name, Prefix='Academy/')['Contents']
+    academy_file = s3_client.list_objects(Bucket=bucket_name, Prefix='Cleaned/Academy/')['Contents']
 
     # Lists the path, by referencing the 'Key', for each file in the academy folder
     all_academy_filepath = [i['Key'] for i in academy_file]
