@@ -34,6 +34,3 @@ def get_applicants_csvs():
             list_all_applicants_content.append(each_dict)
     logger.info('Academy csv files converted to json and ready to load into MongoDB')
     return list_all_applicants_content
-
-
-get_applicants_csvs()

@@ -58,6 +58,3 @@ def get_academy_csvs():
     [combined_list.extend(i) for i in list_all_academy_content]
 
     return combined_list
-
-
-get_academy_csvs()

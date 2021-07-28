@@ -51,6 +51,7 @@ def clean_academy():
     logger.info("Started to clean the academy files")
     for i in create_file_list('Academy/'):
         path = bucket_name + '/' + i
+
         clean_academy_csv(path)
         print(f'{i} cleaning successful')
     logger.info('Cleaning of academy files complete')
@@ -89,6 +90,3 @@ def clean_bucket():
     clean_spartaday()
     clean_applicants()
     logger.info('All cleaning has been successfully completed')
-
-
-clean_bucket()
