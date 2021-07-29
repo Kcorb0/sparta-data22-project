@@ -1,5 +1,5 @@
 from app.extract.s3_client import *
-from read_json import read_json
+from app.load.read_json import read_json
 from app.logging.extract_logger import *
 
 
