@@ -15,4 +15,5 @@ def get_csv_objects(file_name):
     # Converts into a dictionary
     csv_json_file = reading_file.to_json(orient='records')
     csv_list = json.loads(csv_json_file)
+    
     return csv_list

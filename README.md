@@ -16,7 +16,7 @@ The pipeline extracts the following data from an Amazon S3 data lake:<br>
 <br>
 <li>
     Sparta Day - This is data collected from the applicant that has made it to the Sparta Day event. <br>
-                Applicants undertake phychometric tests and presentations and are scored on performance. <br>
+                Applicants undertake psychometric tests and presentations and are scored on performance. <br>
 </li> 
 <br>
 <li>
