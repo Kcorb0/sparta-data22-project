@@ -19,8 +19,10 @@ def list_bucket(prefix):
 
 
 def create_file_list(prefix):
-    key_list = []
+    # Create a list of all files with the given prefix, mainly used for talent and academy files
+    # because they are harder to get from s3
 
+    key_list = []
     if prefix == 'Talent/':
         jsons_list = []
         # Count that resembles 1000 jsons
@@ -48,6 +50,8 @@ def create_file_list(prefix):
 
 
 def clean_academy():
+    # Run all cleaning operations on the academy files
+
     logger.info("Started to clean the academy files.")
     print('Cleaning academy files.')
     for i in tqdm(create_file_list('Academy/')):
@@ -62,6 +66,8 @@ def clean_academy():
 
 
 def clean_talent():
+    # Run all cleaning operations on the talent files
+
     logger.info('Started to clean the talent files.')
     print('Cleaning talent files.')
     for i in tqdm(create_file_list('Talent/')):
@@ -76,8 +82,11 @@ def clean_talent():
 
 
 def clean_spartaday():
+    # Run all cleaning operations on the spartaday files
+
     logger.info('Started to clean the sparta day files.')
     print('Cleaning spartaday files.')
+
     for i in tqdm(create_file_list('Talent/Sparta')):
         path = bucket_name + '/' + i
         try:
@@ -85,28 +94,37 @@ def clean_spartaday():
         except:
             logger.error('Error trying to clean the sparta day csv files.')
             break
+        
     print(f'Spartaday cleaning successful.')
     logger.info('Cleaning of sparta day files complete.')
 
 
 def clean_applicants():
+    # Run all cleaning operations on the applicants files
+
     logger.info('Started to clean the applicants files.')
     print('Cleaning applicants files.')
+
     for i in tqdm(create_file_list('Talent/Applicants')):
         path = bucket_name + '/' + i
         try:
             clean_applicants_csv_file(path)
         except:
             logger.error('Error trying to clean the applicants csv files.')
+
     print(f'Applicants cleaning successful.')
     logger.info('Cleaning of applicants files complete.')
 
 
 def clean_bucket():
+    # Run all cleaning operations on all file types
+
     logger.info('The cleaning of the original files has started.')
     print('cleaning_started')
+
     clean_academy()
     clean_talent()
     clean_spartaday()
     clean_applicants()
+
     logger.info('All cleaning has been successfully completed.')
