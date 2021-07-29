@@ -7,7 +7,7 @@ def main():
     # Check if any new files have been added to the s3 bucket
     status = check_new_data()
 
-    if not status:
+    if status:
         # Clean all files and upload to s3 bucket
         clean_bucket()
         # load all cleaned files from s3

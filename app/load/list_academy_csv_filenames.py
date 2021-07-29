@@ -27,7 +27,7 @@ def get_academies_objects(file_name):
     # Puts the contents of the file into a csv format using pandas
     reading_file = pd.read_csv(single_academy_file)
     # Converts into a json file, formatted using replace and split
-    academy_json_file = reading_file.to_json(orient='records')[1:-1].replace('},{', '}/{').split('/')
+    academy_json_file = reading_file.to_json(orient='records')[1:-1].replace('},{', '}|{').split('|')
     academy_list = []
     # For each row in the academy file, it uploads it into the above list as a KVP
     for i in academy_json_file:

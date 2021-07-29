@@ -35,48 +35,51 @@ def load_documents(file_list, file_type, collection):
 # Loop through applicants and embed the matching names from sparta day
 # Loop through applicants and embed the matching names from talent
 # Loop through applicants and embed the matching names from academy
-get_applicants = get_applicants_csvs()
-get_academy = get_academy_csvs()
-get_spartaday = get_spartaday_csvs()
-get_talent = get_talent_jsons()
+def embed_all():
+    get_applicants = get_applicants_csvs()
+    get_academy = get_academy_csvs()
+    get_spartaday = get_spartaday_csvs()
+    get_talent = get_talent_jsons()
+
+    def embed_academy():  # 397 matches
+        logger.info('Academy files are being embedded into the applicants collection.')
+        for student in get_applicants:  # For each student in the application list, do the block below
+            for person in get_academy:  # For each person in academy list, do block below
+                # for key, values in person.items():  # loops through each dictionary in academy list
+                if person['name'] == student['name'] and person['Invited_date'] == student['date']:  # If the names match
+                    # in both lists (A match on name)
+                    academy_details = {'academy_details': person}  # Creates a variable containing a dictionary with the
+                    # person's academy details
+                    student.update(academy_details)  # Inserts the person's academy details as a dictionary into the
+                    # applications doc under the matching name
 
 
-def embed_academy():  # 397 matches
-    logger.info('Academy files are being embedded into the applicants collection.')
-    for student in get_applicants:  # For each student in the application list, do the block below
-        for person in get_academy:  # For each person in academy list, do block below
-            # for key, values in person.items():  # loops through each dictionary in academy list
-            if person['name'] == student['name'] and person['Invited_date'] == student['date']:  # If the names match
-                # in both lists (A match on name)
-                academy_details = {'academy_details': person}  # Creates a variable containing a dictionary with the
-                # person's academy details
-                student.update(academy_details)  # Inserts the person's academy details as a dictionary into the
-                # applications doc under the matching name
+    def embed_talent():  # Same as previous, 3107 matches
+        logger.info('Talent files are being embedded into the applicants collection.')
+        for student in get_applicants:
+            for person in get_talent:
+                if person['name'] == student['name']:
+                    student.update({'talent_details': person})
 
 
-def embed_talent():  # Same as previous, 3107 matches
-    logger.info('Talent files are being embedded into the applicants collection.')
-    for student in get_applicants:
-        for person in get_talent:
-            if person['name'] == student['name']:
-                student.update({'talent_details': person})
+    def embed_sparta_day():  # Same as previous, 4138 count
+        logger.info('Sparta Day files are being embedded into the applicants collection.')
+        for student in get_applicants:
+            for person in get_spartaday:
+                if person['Full_name'] == student['name']:
+                    student.update({'sparta_day_details': person})
 
-
-def embed_sparta_day():  # Same as previous, 4138 count
-    logger.info('Sparta Day files are being embedded into the applicants collection.')
-    for student in get_applicants:
-        for person in get_spartaday:
-            if person['Full_name'] == student['name']:
-                student.update({'sparta_day_details': person})
+    return get_applicants
 
 
 def load_to_mongodb():
     logger.info('Cleaned files are being loaded to MongoDB.')
-    load_documents(get_applicants, 'csv', 'embedded_applicants')
+    load_documents(embed_all(), 'csv', 'embedded_applicants')
     # load_documents(get_talent_jsons(), 'json', 'talent')
     # load_documents(get_academy_csvs(), 'csv', 'academy')
     # load_documents(get_spartaday_csvs(), 'csv', 'spartaday')
     # load_documents(get_applicants_csvs(), 'csv', 'applicants')
+
 
 # def load_to_mongodb():
 #     logger.info('Cleaned files are being loaded to MongoDB.')
@@ -88,10 +91,3 @@ def load_to_mongodb():
 #     logger.info('Sparta day files have been successfully loaded.')
 #     load_documents(get_applicants_csvs(), 'csv', 'applicants')
 #     logger.info('Applicant files have been successfully loaded.')
-
-
-embed_talent()
-embed_academy()
-embed_sparta_day()
-
-load_to_mongodb()
