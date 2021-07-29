@@ -106,7 +106,7 @@ def clean_bucket():
     logger.info('The cleaning of the original files has started.')
     print('cleaning_started')
     clean_academy()
-    #clean_talent()
+    clean_talent()
     clean_spartaday()
     clean_applicants()
     logger.info('All cleaning has been successfully completed.')
