@@ -1,11 +1,12 @@
 import pandas as pd
 import json
 from app.extract.s3_client import *
+from app.logging.extract_logger import *
 
 
 def get_all_academy_filepath():
     # Function that extracts the files from the academy folder within the s3 bucket
-
+    logger.info('Extracting academy files from s3 bucket.')
     # Looks for all the files whose filepath starts with 'Academy/' - gets all files in academy folder and its contents
     academy_file = s3_client.list_objects(Bucket=bucket_name, Prefix='Cleaned/Academy/')['Contents']
 
@@ -41,8 +42,11 @@ def get_academy_csvs():
     # Uses the list from get_all_academy_filepath function
     for i in get_all_academy_filepath():
         # Iterates through said list to get the path for each file and use it for get_academies_objects function
-        list_all_academy_content.append(get_academies_objects(i))
-
+        try:
+            list_all_academy_content.append(get_academies_objects(i))
+        except:
+            logger.error('Error whilst trying to convert academy csv file to a dict.')
+    logger.info('Academy csv files converted to json and ready to load into MongoDB.')
     combined_list = []
     [combined_list.extend(i) for i in list_all_academy_content]
 
