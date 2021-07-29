@@ -12,6 +12,5 @@ def read_json(filename):
     # Decode bytes to string then load to json
     # Using ultra json to speed up the process a little
     reading_file = ujson.loads(talent_file)
-    print('converted to json')
 
     return reading_file

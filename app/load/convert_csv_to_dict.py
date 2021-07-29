@@ -15,7 +15,5 @@ def get_csv_objects(file_name):
     # Converts into a dictionary
     csv_json_file = reading_file.to_json(orient='records')
     csv_list = json.loads(csv_json_file)
-    for dict in csv_list:
-        if type(dict['phone_number']) == float:
-            dict['phone_number'] = '+' + str(dict['phone_number'])[:-2]
+    
     return csv_list
